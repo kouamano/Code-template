@@ -4,12 +4,18 @@
 #define LEN 1024
 
 struct options {
+	int help;
+	int stat;
 	int argint;
 	char *argstr;
 };
 
 void help(void){
 	printf("USAGE:\n");
+}
+
+void status(void){
+	printf("STATUS:\n");
 }
 
 void alloc_options(void){
