@@ -40,5 +40,9 @@ int get_options(int optc, char **optv, struct options *opt){
 }
 
 int main(int argc, char **argv){
+	struct options *opt;
+	opt = alloc_opt();
+	init_opt(opt);
+	get_options(argc-1, argv+1, opt);
 	return(0);
 }
