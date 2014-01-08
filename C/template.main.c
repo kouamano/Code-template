@@ -13,10 +13,12 @@ struct options {
 
 void help(void){
 	printf("USAGE:\n");
-	printf(" template [-h] [-s] [-c].\n");
+	printf(" template [-h] [-s] [-c] int=<argint> str=<argstr>.\n");
 	printf("  -h : help.\n");
 	printf("  -s : stat.\n");
 	printf("  -c : check args.\n");
+	printf("  argint : set integer.\n");
+	printf("  argstr : set *chars (len < 1024).\n");
 }
 
 void status(void){
@@ -52,6 +54,10 @@ void get_options(int optc, char **optv, struct options *opt){
 			(*opt).help = 1;
 		}else if(strcmp(optv[i],"-s") == 0){
 			(*opt).stat = 1;
+		}else if(strcmp(optv[i],"-c") == 0){
+			(*opt).check = 1;
+		}else if(strncmp(optv[i],"int=",4) == 0){
+			sscanf(optv[i],"int=%d",&(*opt).argint);
 		}else if(strncmp(optv[i],"str=",4) == 0){
 			sscanf(optv[i],"str=%s",(*opt).argstr);
 		}
@@ -59,8 +65,9 @@ void get_options(int optc, char **optv, struct options *opt){
 }
 
 void check_options(struct options *opt){
-	printf("opt.help:%d:",(*opt).help);
-	printf("opt.argstr:%s:",(*opt).argstr);
+	printf("ARG:\n");
+	printf("  opt.argint:%d:\n",(*opt).argint);
+	printf("  opt.argstr:%s:\n",(*opt).argstr);
 }
 
 int main(int argc, char **argv){
@@ -68,5 +75,14 @@ int main(int argc, char **argv){
 	opt = alloc_options();
 	init_options(opt);
 	get_options(argc-1, argv+1, opt);
+	if((*opt).help == 1){
+		help();
+	}
+	if((*opt).stat == 1){
+		status();
+	}
+	if((*opt).check == 1){
+		check_options(opt);
+	}
 	return(0);
 }
