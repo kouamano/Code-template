@@ -65,9 +65,9 @@ void get_options(int optc, char **optv, struct options *opt){
 }
 
 void check_options(struct options *opt){
-	printf("ARG:\n");
-	printf("  opt.argint:%d:\n",(*opt).argint);
-	printf("  opt.argstr:%s:\n",(*opt).argstr);
+	printf("OPTIONS:\n");
+	printf(" opt.argint:%d:\n",(*opt).argint);
+	printf(" opt.argstr:%s:\n",(*opt).argstr);
 }
 
 int main(int argc, char **argv){
