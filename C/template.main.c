@@ -72,17 +72,27 @@ void check_options(struct options *opt){
 
 int main(int argc, char **argv){
 	struct options *opt;
+	int ie=0;
 	opt = alloc_options();
 	init_options(opt);
 	get_options(argc-1, argv+1, opt);
+	if(argc == 1){
+		(*opt).help = 1;
+	}
 	if((*opt).help == 1){
 		help();
+		ie = 1;
 	}
 	if((*opt).stat == 1){
 		status();
+		ie = 1;
 	}
 	if((*opt).check == 1){
 		check_options(opt);
+		ie = 1;
+	}
+	if(ie == 1){
+		exit(0);
 	}
 	return(0);
 }
