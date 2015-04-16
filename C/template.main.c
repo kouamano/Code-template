@@ -72,7 +72,7 @@ void check_options(struct options *opt){
 
 int main(int argc, char **argv){
 	struct options *opt;
-	int ie=0;
+	int ie = 0;
 	opt = alloc_options();
 	init_options(opt);
 	get_options(argc-1, argv+1, opt);
