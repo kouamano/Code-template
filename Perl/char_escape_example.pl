@@ -4,7 +4,7 @@ while(<>){
 	push(@tmp,$_);
 }
 
-@tmp = &escape(@tmp);
+@tmp2 = &escape(@tmp);
 
 foreach(@tmp2){
 	print $_;
