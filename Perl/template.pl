@@ -4,14 +4,16 @@
 $help = 0;
 $check = 0;
 $status = 0;
-$int1 = 0;
-$str1 = "";
+$tag = "";
+$if = "";
+$of = "";
+$ex = 1; #exclude other tags
 $ie = 0;
 
 # subroutine
 sub _help {
 	print "USAGE:\n";
-	printf " this is a template.\n"
+	printf " KO_element.pl tag=<tag> if=<input file> of=<output file(KO-part)> -e|-E -h -c -s \n"
 }
 
 sub _check {
@@ -19,13 +21,15 @@ sub _check {
 	print " help:$help:\n";
 	print " check:$check:\n";
 	print " status:$status:\n";
-	print " int1:$int1:\n";
-	print " str1:$str1:\n";
+	print " tag:$tag:\n";
+	print " ex:$ex:\n";
+	print " if:$if:\n";
+	print " of:$of:\n";
 }
 
 sub _status {
 	print "STATUS:\n";
-	printf " this is a template.\n"
+	printf " Under construction.\n"
 }
 
 # argment analysis
@@ -36,10 +40,16 @@ foreach $l (@ARGV) {
 		$check = 1;
 	}elsif($l eq "-s"){
 		$status = 1;
-	}elsif($l =~ /int1=(.*)/){
-		$int1 = $1;
-	}elsif($l =~ /str1=(.*)/){
-		$str1 = $1;
+	}elsif($l eq "-e"){
+		$ex = 1;
+	}elsif($l eq "-E"){
+		$ex = 0;
+	}elsif($l =~ /tag=(.*)/){
+		$tag = $1;
+	}elsif($l =~ /if=(.*)/){
+		$if = $1;
+	}elsif($l =~ /of=(.*)/){
+		$if = $1;
 	}else{
 		print "unknown:$l:\n";
 	}
@@ -61,3 +71,9 @@ if($status == 1){
 if($ie == 1){
 	exit(0);
 }
+
+## function
+open(IN,$if);
+close(IN);
+
+
