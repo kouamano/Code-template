@@ -1,0 +1,1 @@
+gcc -o a.out eig_clapack.c -L/usr/lib -lclapack_LINUX -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
