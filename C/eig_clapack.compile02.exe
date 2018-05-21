@@ -1,1 +1,2 @@
-gcc44 -o a.out eig_clapack.c -L/usr/lib -lclapack_LINUX -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
+# 以下失敗。そもそもctmgがsystemにない。
+gcc44 -o a.out eig_clapack.c -L/usr/lib64/atlas -lclapack -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
