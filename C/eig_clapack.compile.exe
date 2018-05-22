@@ -1,2 +1,5 @@
-#以下失敗
-gcc -o a.out eig_clapack.c -L/usr/lib -lclapack_LINUX -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
+# original 以下失敗
+# gcc -o a.out eig_clapack.c -L/usr/lib -lclapack_LINUX -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
+# clapack
+# 以下成功
+gcc -o a.out eig_clapack.c -L/usr/lib -lclapack -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
