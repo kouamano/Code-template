@@ -1,5 +1,6 @@
 # original 以下失敗
 # gcc -o a.out eig_clapack.c -L/usr/lib -lclapack_LINUX -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
-# clapack
-# 以下検証中
-gcc -o a.out eig_clapack.c -L/usr/lib64/atlas -lclapack -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
+# gcc4.4 以下検証中、ctmgがない。
+gcc44 -o a.out eig_clapack.c -L/usr/lib64/atlas -lclapack -L/usr/local/lib/lapack/3.8.0 -ltmglib -L/usr/lib64/atlas -lcblas -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
+# gcc7.3 以下検証中、ctmgがない。
+#gcc -o a.out eig_clapack.c -L/usr/lib64/atlas -lclapack -lctmglib_LINUX -L/usr/atlas/lib -lptf77blas -latlas -lf2c -lpthread -lm
