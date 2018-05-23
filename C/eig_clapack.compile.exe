@@ -8,6 +8,7 @@ gcc -o a.out eig_clapack.c \
  -latlas \
 -L/usr/local/lib/lapack/CLAPACK-3.2.1 -lf2c \
 -L/usr/lib64 -lgsl \
+-lgslcblas \
 -L/usr/local/lib/blas/CBLAS-3.8.0 -lcblas_LINUX \
  -lpthread \
  -lm

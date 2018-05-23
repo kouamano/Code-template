@@ -16,6 +16,7 @@
 
 // CLAPACK を使う．
 //  see http://www.netlib.org/clapack/clapack.h
+#include "/usr/local/include/lapack/3.8.0/CLAPACK/clapack.h"
 
 // ?geev : simple driver for eigenvalues/vectors
 //         see http://www.netlib.org/lapack/lug/node32.html
