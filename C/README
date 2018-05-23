@@ -1,2 +1,2 @@
 #compile
-eig_clapack.c	compile.txt
+*.c	*.compile.exe
