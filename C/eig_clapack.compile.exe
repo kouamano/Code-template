@@ -6,9 +6,9 @@ gcc -o a.out eig_clapack.c \
  -lctmglib_LINUX \
 -L/usr/lib64/atlas -lptf77blas \
  -latlas \
+-L/usr/local/lib/lapack/CLAPACK-3.2.1 -lf2c \
 -L/usr/lib64 -lgsl \
 -L/usr/local/lib/blas/CBLAS-3.8.0 -lcblas_LINUX \
--L/usr/local/lib/lapack/CLAPACK-3.2.1 -lf2c \
  -lpthread \
  -lm
 # gcc4.4 以下検証中、ctmgがない。
