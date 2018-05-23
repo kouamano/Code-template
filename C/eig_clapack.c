@@ -14,14 +14,14 @@
 #  define doublereal double
 #endif
 
-// CLAPACK ‚ğg‚¤D
+// CLAPACK ã‚’ä½¿ã†ï¼
 //  see http://www.netlib.org/clapack/clapack.h
 
 // ?geev : simple driver for eigenvalues/vectors
 //         see http://www.netlib.org/lapack/lug/node32.html
 
 integer eigenvalues( integer n, doublereal *a, doublereal *wr, doublereal *wi ) {
-  /* LAPACK ‚Ì _dgeev() ‚ğg‚Á‚ÄŒÅ—L’li‚¾‚¯j‚ğ‹‚ß‚é */
+  /* LAPACK ã® _dgeev() ã‚’ä½¿ã£ã¦å›ºæœ‰å€¤ï¼ˆã ã‘ï¼‰ã‚’æ±‚ã‚ã‚‹ */
 
   integer n3 = 3 * n;
   integer info; 
@@ -31,19 +31,19 @@ integer eigenvalues( integer n, doublereal *a, doublereal *wr, doublereal *wi ) 
   doublereal *work = (doublereal *)calloc(sizeof(doublereal), n3);
 
   (void) dgeev_(
-		/* char *jobvl */      "N",  /* "N" ‚È‚Ì‚Å¶ŒÅ—LƒxƒNƒgƒ‹‚ğŒvZ‚µ‚È‚¢ */
-		/* char *jobvr */      "N",  /* "N" ‚È‚Ì‚Å‰EŒÅ—LƒxƒNƒgƒ‹‚ğŒvZ‚µ‚È‚¢ */ 
-		/* integer *n */       &n,   /* ³•ûs—ñ‚ÌŸ” */
+		/* char *jobvl */      "N",  /* "N" ãªã®ã§å·¦å›ºæœ‰ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—ã—ãªã„ */
+		/* char *jobvr */      "N",  /* "N" ãªã®ã§å³å›ºæœ‰ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—ã—ãªã„ */ 
+		/* integer *n */       &n,   /* æ­£æ–¹è¡Œåˆ—ã®æ¬¡æ•° */
 		/* doublereal *a, */   a,    /* A */
-		/* integer *lda, */    &n,   /* A —p‚Ìì‹Æ—Ìˆæ */
-		/* doublereal *wr, */  wr,   /* ŒÅ—L’l‚ÌÀ•” */
-		/* doublereal *wi, */  wi,   /* ŒÅ—L’l‚Ì‹••” */
-		/* doublereal *vl, */  vl,   /* ¶ŒÅ—L’l */
-		/* integer *ldvl, */   &n,   /* ¶ŒÅ—L’l‚Ìì‹Æ—p */
-		/* doublereal *vr, */  vr,   /* ‰EŒÅ—L’l */
-		/* integer *ldvr, */   &n,   /* ¶ŒÅ—L’l‚Ìì‹Æ—p */
-		/* doublereal *work, */ work, /* ì‹Æ—p */
-		/* integer *lwork, */  &n3,   /* ì‹Æ—p‚Ìs—ñ‚ÌŸŒ³ */
+		/* integer *lda, */    &n,   /* A ç”¨ã®ä½œæ¥­é ˜åŸŸ */
+		/* doublereal *wr, */  wr,   /* å›ºæœ‰å€¤ã®å®Ÿéƒ¨ */
+		/* doublereal *wi, */  wi,   /* å›ºæœ‰å€¤ã®è™šéƒ¨ */
+		/* doublereal *vl, */  vl,   /* å·¦å›ºæœ‰å€¤ */
+		/* integer *ldvl, */   &n,   /* å·¦å›ºæœ‰å€¤ã®ä½œæ¥­ç”¨ */
+		/* doublereal *vr, */  vr,   /* å³å›ºæœ‰å€¤ */
+		/* integer *ldvr, */   &n,   /* å·¦å›ºæœ‰å€¤ã®ä½œæ¥­ç”¨ */
+		/* doublereal *work, */ work, /* ä½œæ¥­ç”¨ */
+		/* integer *lwork, */  &n3,   /* ä½œæ¥­ç”¨ã®è¡Œåˆ—ã®æ¬¡å…ƒ */
 		/* integer *info */    &info);
 
   free( work ); 
@@ -55,7 +55,7 @@ integer eigenvalues( integer n, doublereal *a, doublereal *wr, doublereal *wi ) 
 }
 
 integer eigenvalues_rightvectors( integer n, doublereal *a, doublereal *wr, doublereal *wi, doublereal *vr ) {
-  /* LAPACK ‚Ì _dgeev() ‚ğg‚Á‚ÄŒÅ—L’l‚Æ‰EŒÅ—LƒxƒNƒgƒ‹‚ğ‹‚ß‚é */
+  /* LAPACK ã® _dgeev() ã‚’ä½¿ã£ã¦å›ºæœ‰å€¤ã¨å³å›ºæœ‰ãƒ™ã‚¯ãƒˆãƒ«ã‚’æ±‚ã‚ã‚‹ */
   /* A * v(j) = lambda(j) * v(j), v(j) is the right eigen vector */
 
   integer n4 = 4 * n;
@@ -66,19 +66,19 @@ integer eigenvalues_rightvectors( integer n, doublereal *a, doublereal *wr, doub
 
 
   (void) dgeev_(
-		/* char *jobvl */      "N",  /* "N" ‚È‚Ì‚Å¶ŒÅ—LƒxƒNƒgƒ‹‚ğŒvZ‚µ‚È‚¢ */
-		/* char *jobvr */      "V",  /* "V" ‚È‚Ì‚Å‰EŒÅ—LƒxƒNƒgƒ‹‚ğŒvZ‚·‚é */ 
-		/* integer *n */       &n,   /* ³•ûs—ñ‚ÌŸ” */
+		/* char *jobvl */      "N",  /* "N" ãªã®ã§å·¦å›ºæœ‰ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—ã—ãªã„ */
+		/* char *jobvr */      "V",  /* "V" ãªã®ã§å³å›ºæœ‰ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—ã™ã‚‹ */ 
+		/* integer *n */       &n,   /* æ­£æ–¹è¡Œåˆ—ã®æ¬¡æ•° */
 		/* doublereal *a, */   a,    /* A */
-		/* integer *lda, */    &n,   /* A —p‚Ìì‹Æ—Ìˆæ */
-		/* doublereal *wr, */  wr,   /* ŒÅ—L’l‚ÌÀ•” */
-		/* doublereal *wi, */  wi,   /* ŒÅ—L’l‚Ì‹••” */
-		/* doublereal *vl, */  vl,   /* ¶ŒÅ—L’l */
-		/* integer *ldvl, */   &n,   /* ¶ŒÅ—L’l‚Ìì‹Æ—p */
-		/* doublereal *vr, */  vr,   /* ‰EŒÅ—L’l */
-		/* integer *ldvr, */   &n,   /* ¶ŒÅ—L’l‚Ìì‹Æ—p */
-		/* doublereal *work, */ work, /* ì‹Æ—p */
-		/* integer *lwork, */  &n4,   /* ì‹Æ—p‚Ìs—ñ‚ÌŸŒ³ */
+		/* integer *lda, */    &n,   /* A ç”¨ã®ä½œæ¥­é ˜åŸŸ */
+		/* doublereal *wr, */  wr,   /* å›ºæœ‰å€¤ã®å®Ÿéƒ¨ */
+		/* doublereal *wi, */  wi,   /* å›ºæœ‰å€¤ã®è™šéƒ¨ */
+		/* doublereal *vl, */  vl,   /* å·¦å›ºæœ‰å€¤ */
+		/* integer *ldvl, */   &n,   /* å·¦å›ºæœ‰å€¤ã®ä½œæ¥­ç”¨ */
+		/* doublereal *vr, */  vr,   /* å³å›ºæœ‰å€¤ */
+		/* integer *ldvr, */   &n,   /* å·¦å›ºæœ‰å€¤ã®ä½œæ¥­ç”¨ */
+		/* doublereal *work, */ work, /* ä½œæ¥­ç”¨ */
+		/* integer *lwork, */  &n4,   /* ä½œæ¥­ç”¨ã®è¡Œåˆ—ã®æ¬¡å…ƒ */
 		/* integer *info */    &info);
 
   free( work ); 
@@ -90,18 +90,18 @@ integer eigenvalues_rightvectors( integer n, doublereal *a, doublereal *wr, doub
 
 int main( integer argc, char **argv ) {
   int i; 
-  integer n = 2000; /* ³•ûs—ñ‚ÌŸ” */
+  integer n = 2000; /* æ­£æ–¹è¡Œåˆ—ã®æ¬¡æ•° */
   doublereal *a  = (doublereal *)calloc(sizeof(doublereal), n * n); 
   doublereal *wr = (doublereal *)calloc(sizeof(doublereal), n); 
   doublereal *wi = (doublereal *)calloc(sizeof(doublereal), n);  
   doublereal *vr = (doublereal *)calloc(sizeof(doublereal), n * n); 
 
-  // ‚±‚±‚©‚ç‚ÍCGSL ‚Ì‹@”\‚ğg‚Á‚ÄC—”‚ğ”z—ñ a ‚ÉŠi”[
+  // ã“ã“ã‹ã‚‰ã¯ï¼ŒGSL ã®æ©Ÿèƒ½ã‚’ä½¿ã£ã¦ï¼Œä¹±æ•°ã‚’é…åˆ— a ã«æ ¼ç´
   gsl_rng_env_setup();
   gsl_rng_type *T = (gsl_rng_type *)gsl_rng_default;
-  /* —””­¶Ší */
+  /* ä¹±æ•°ç™ºç”Ÿå™¨ */
   gsl_rng *r = gsl_rng_alloc(T);
-  /* ƒVƒXƒeƒ€ƒNƒƒbƒN‚ğg‚Á‚Ä—”‚Ì‰Šú’l‚ğİ’è */
+  /* ã‚·ã‚¹ãƒ†ãƒ ã‚¯ãƒ­ãƒƒã‚¯ã‚’ä½¿ã£ã¦ä¹±æ•°ã®åˆæœŸå€¤ã‚’è¨­å®š */
   gsl_rng_set (r, time (NULL));
 
   for(i = 0; i < (n * n); i++) {
@@ -109,20 +109,20 @@ int main( integer argc, char **argv ) {
   }
   gsl_rng_free(r);
 
-  /* ƒNƒƒbƒNŠJn */
+  /* ã‚¯ãƒ­ãƒƒã‚¯é–‹å§‹ */
   printf( "start, \n" );
   clock_t c = clock();
 
-  // ŒÅ—L’l. À•”‚ª wr, ‹••”‚ª wi
+  // å›ºæœ‰å€¤. å®Ÿéƒ¨ãŒ wr, è™šéƒ¨ãŒ wi
   // eigenvalues( n, a, wr, wi ); 
   eigenvalues_rightvectors( n, a, wr, wi, vr ); 
 
-  /* iƒIƒvƒVƒ‡ƒ“jŠm”Fo—Í */
+  /* ï¼ˆã‚ªãƒ—ã‚·ãƒ§ãƒ³ï¼‰ç¢ºèªå‡ºåŠ› */
   // for(i = 0; i < n; i++) {
   //   printf("%5d %15.7e %15.7e\n", i + 1, *(wr + i), *(wi + i));
   // }
 
-  /* ƒNƒƒbƒNI—¹ */
+  /* ã‚¯ãƒ­ãƒƒã‚¯çµ‚äº† */
   printf( "done, elapsed time = %f [sec]\n", ( (double)clock() - (double)c ) / CLOCKS_PER_SEC );
 
   free(wi);
@@ -131,3 +131,4 @@ int main( integer argc, char **argv ) {
 
   return 0;
 }
+
