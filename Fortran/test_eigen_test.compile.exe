@@ -1,0 +1,4 @@
+#以下成功
+gfortran44 test_eigen.f90 -llapack -lblas
+#以下失敗、さらに呼び出されるライブラリとの互換性
+#gfortran test_eigen.f90 -L/usr/local/lib/lapack/3.8.0 -llapack -L/usr/local/lib/blas/3.8.0 -lblas_LINUX
