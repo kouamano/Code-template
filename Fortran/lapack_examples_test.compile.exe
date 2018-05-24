@@ -1,0 +1,4 @@
+#以下成功
+# gfortran44 lapack_examples_test.f90 -llapack -lblas -lm
+#以下成功
+gfortran lapack_examples_test.f90 -L/usr/local/lib/lapack/3.8.0 -llapack -L/usr/local/lib/blas/3.8.0 -lblas_LINUX
