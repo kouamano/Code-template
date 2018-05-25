@@ -1,4 +1,5 @@
-#以下調査中
-gfortran44 test_eigen_test.f90 -llapack -lblas -lm
+#以下成功
+gfortran44 -c test_eigen.f90 -llapack -lblas -lm
+gfortran44 test_eigen_test.f90 test_eigen.o -llapack -lblas -lm
 #以下失敗、さらに呼び出されるライブラリとの互換性
 #gfortran test_eigen.f90 -L/usr/local/lib/lapack/3.8.0 -llapack -L/usr/local/lib/blas/3.8.0 -lblas_LINUX
