@@ -7,9 +7,6 @@
 #define SIZE 2   // 2*2型の行列
 #include <stdio.h>
 #include <complex.h>
-#include "/usr/local/include/blas/3.8.0/CBLAS/cblas.h"
-#include "/usr/local/include/lapack/3.8.0/CLAPACK/f2c.h"
-#include "/usr/local/include/lapack/3.8.0/CLAPACK/clapack.h"
 
 int main(void)
 {
