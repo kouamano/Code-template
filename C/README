@@ -1,5 +1,12 @@
-#compile
+# コンパイルテストまとめ
+
+## How to compile
+## compile コマンドをスクリプト　化
 *.c	*.compile.exe
 
-#成功
+## 成功
 complex_lapack.compile.exe
+dsyev.compile.exe
+eig_clapack.compile.exe
+lin_eq.compile.exe
+test_eigen_test.compile.exe
