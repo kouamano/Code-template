@@ -1,2 +1,5 @@
 #compile
 *.c	*.compile.exe
+
+#成功
+complex_lapack.compile.exe
