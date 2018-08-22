@@ -113,36 +113,39 @@ int main(int argc, char **argv){
 	}
 
 	/* main routine */
-	char jobvl = 'N';
-	char jobvr = 'V';
-	int size;
-	// complex A; // = xtable
-	int lda;
+	char jobvl = 'N';					//左固有ベクトルは計算しない
+	char jobvr = 'V';					//右固有ベクトルは計算する
+	int size;						//対角化する正方行列のサイズ
+	// complex A; // = xtable				//対角化する行列
+	int lda;						//対角化する正方行列のサイズ
 	  lda = (*opt).nlines;
-	complex *wr;
+	complex *wr;						//固有値が入る
 	  wr = x_alloc_vec((*opt).nlines);
-	complex vlDUMMY[1];
-	int ldvlDUMMY = 1;
-	complex *vr;
+	complex vlDUMMY[1];					//左固有ベクトルが入る(不必要なので[1])
+	int ldvlDUMMY = 1;					//vlDUMMY[1]の次元
+	complex *vr;						//右固有ベクトルが入る
 	  vr = x_alloc_vec((*opt).nlines * (*opt).nlines);
-	int ldvr;
+	int ldvr;						//右固有ベクトルの本数
 	  ldvr = (*opt).nlines;
-	complex *work;
+	complex *work;						//対角化する際に使用するメモリ
 	  work = x_alloc_vec(2 * (*opt).nlines);
-	int lwork;
+	int lwork;						//workの次元
 	  lwork = 2 * (*opt).nlines;
-	double *rwork;
+	double *rwork;						//ワーク用メモリ 2*SIZEで固定
 	  rwork = d_alloc_vec(2 * (*opt).nlines);
-	int info;
+	int info;						//成功すれば0 失敗すれば0以外を返す
 	xtable = x_alloc_mat((*opt).nlines,(*opt).ntuples);
 	FP = fopen((*opt).file,"r");
 	read_xtable_from_stream((*opt).nlines,(*opt).ntuples,FP,xtable);
 	fclose(FP);
+	/* lapacke */
+	//zgeev_(&jobvl, &jobvr, &n, A, &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
 	
 	/* print out */
+	printf("/* original matrix */\n");
 	for(i=0;i<(*opt).nlines;i++){
 		for(j=0;j<(*opt).ntuples;j++){
-			printf(" %lf+%lfI",creal(xtable[i][j]),cimag(xtable[i][j]));
+			printf("%lf+%lfI ",creal(xtable[i][j]),cimag(xtable[i][j]));
 		}
 		printf("\n");
 	}
