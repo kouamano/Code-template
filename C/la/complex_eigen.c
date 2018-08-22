@@ -115,6 +115,25 @@ int main(int argc, char **argv){
 	/* main routine */
 	char jobvl = 'N';
 	char jobvr = 'V';
+	int size;
+	// complex A; // = xtable
+	int lda;
+	  lda = (*opt).nlines;
+	complex *wr;
+	  wr = x_alloc_vec((*opt).nlines);
+	complex vlDUMMY[1];
+	int ldvlDUMMY = 1;
+	complex *vr;
+	  vr = x_alloc_vec((*opt).nlines * (*opt).nlines);
+	int ldvr;
+	  ldvr = (*opt).nlines;
+	complex *work;
+	  work = x_alloc_vec(2 * (*opt).nlines);
+	int lwork;
+	  lwork = 2 * (*opt).nlines;
+	double *rwork;
+	  rwork = d_alloc_vec(2 * (*opt).nlines);
+	int info;
 	xtable = x_alloc_mat((*opt).nlines,(*opt).ntuples);
 	FP = fopen((*opt).file,"r");
 	read_xtable_from_stream((*opt).nlines,(*opt).ntuples,FP,xtable);
