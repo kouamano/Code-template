@@ -139,7 +139,8 @@ int main(int argc, char **argv){
 	read_xtable_from_stream((*opt).nlines,(*opt).ntuples,FP,xtable);
 	fclose(FP);
 	/* lapacke */
-	//zgeev_(&jobvl, &jobvr, &n, A, &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
+	zgeev_(&jobvl, &jobvr, &size, xtable[0], &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
+	//zgeev_(&jobvl, &jobvr, &size, xtable, &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info); //セグメンテーションフォルト
 	
 	/* print out */
 	printf("/* original matrix */\n");
@@ -149,5 +150,19 @@ int main(int argc, char **argv){
 		}
 		printf("\n");
 	}
+	printf("/* eigen values */\n");
+	for(i=0;i<(*opt).nlines;i++){
+		printf("%lf+%lfI ",creal(wr[i]),cimag(wr[i]));
+	}
+	printf("\n");
+	printf("/* eigen vecs */\n");
+	for(i=0;i<(*opt).nlines * (*opt).nlines;i++){
+		printf("%lf+%lfI ",creal(vr[i]),cimag(vr[i]));
+		if((i % (*opt).nlines) == (*opt).nlines-1){
+			printf("\n");
+		}
+	}
 	return(0);
 }
+
+
