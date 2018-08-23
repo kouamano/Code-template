@@ -139,7 +139,8 @@ int main(int argc, char **argv){
 	read_xtable_from_stream((*opt).nlines,(*opt).ntuples,FP,xtable);
 	fclose(FP);
 	/* lapacke */
-	zgeev_(&jobvl, &jobvr, &size, xtable[0], &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
+	zgeev_(&jobvl, &jobvr, &size, *xtable, &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
+	//zgeev_(&jobvl, &jobvr, &size, xtable[0], &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info);
 	//zgeev_(&jobvl, &jobvr, &size, xtable, &lda, wr, vlDUMMY, &ldvlDUMMY, vr, &ldvr, work, &lwork, rwork, &info); //セグメンテーションフォルト
 	
 	/* print out */
