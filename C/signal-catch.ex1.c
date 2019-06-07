@@ -9,7 +9,7 @@ void SigCatch(int sig){
 
 int main(void){
 	int *a;
-	//signal(SIGSEGV,&SigCatch);
-	signal(SIGSEGV,SigCatch);
+	signal(SIGSEGV,&SigCatch);
+	//signal(SIGSEGV,SigCatch);
 	a[1000000000] = 1;
 }
