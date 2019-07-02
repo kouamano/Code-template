@@ -44,9 +44,9 @@ int main(void)
   // 1番目の固有ベクトル : (vr[0] vr[1])
   // 2番目の固有ベクトル : (vr[2] vr[3])
   printf("1番目の固有値:%5.3lf %+5.3lf*I\n", creal(wr[0]), cimag(wr[0]));
-  printf("1番目の固有ベクトル:(%5.3lf %+5.3lf*I %5.3lf %+5.3lf*I)\n", creal(vr[0]), cimag(vr[0]), creal(vr[1]), cimag(vr[1]));
+  printf("1番目の固有ベクトル:(%5.3lf %+5.3lf*I, %5.3lf %+5.3lf*I)\n", creal(vr[0]), cimag(vr[0]), creal(vr[1]), cimag(vr[1]));
   printf("2番目の固有値:%5.3lf %+5.3lf*I\n", creal(wr[1]), cimag(wr[1]));
-  printf("2番目の固有ベクトル:(%5.3lf %+5.3lf*I %5.3lf %+5.3lf*I)\n", creal(vr[2]), cimag(vr[2]), creal(vr[3]), cimag(vr[3]));
+  printf("2番目の固有ベクトル:(%5.3lf %+5.3lf*I, %5.3lf %+5.3lf*I)\n", creal(vr[2]), cimag(vr[2]), creal(vr[3]), cimag(vr[3]));
   return 0;
 }
 
