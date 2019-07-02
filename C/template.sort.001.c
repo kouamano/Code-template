@@ -3,6 +3,11 @@
 #include <string.h>
 #include "../include/alloc.c"
 
+/*
+ * qsort()の第一引数baseについて:
+ * baseに対するmalloc()は1次配列までしか対応できない。
+ */
+
 int mat[10][5];
 typedef int bigint[10];
 //int **mat;
